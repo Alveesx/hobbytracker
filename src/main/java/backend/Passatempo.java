@@ -88,7 +88,7 @@ public abstract class Passatempo implements Serializable {
         return ((double) totalEsteAno / objetivoAnualMinutos) * 100;
     }
 
-    // --- SETTERS (Obrigatórios para editar dados na Interface Gráfica) ---
+    // SETTERS (Obrigatórios para editar dados na Interface Gráfica)
 
     public void setNome(String nome) {
         this.nome = nome;

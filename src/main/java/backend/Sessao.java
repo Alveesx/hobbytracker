@@ -28,7 +28,7 @@ public class Sessao implements Serializable, Comparable<Sessao> {
         return descricao;
     }
 
-    // Este método ensina a Sessão a comparar-se com outra para ver quem vem primeiro
+    // este método ensina a Sessão a comparar-se com outra para ver quem vem primeiro
     @Override
     public int compareTo(Sessao outraSessao) {
         return this.data.compareTo(outraSessao.getData());

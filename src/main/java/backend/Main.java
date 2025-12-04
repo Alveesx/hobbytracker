@@ -47,7 +47,7 @@ public class Main {
             }
         }
 
-        // 4. Guardar tudo
+        // Guardar tudo
         gestor.guardarDados();
         System.out.println("--- FIM DO TESTE ---");
     }

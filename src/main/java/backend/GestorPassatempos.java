@@ -28,7 +28,7 @@ public class GestorPassatempos {
     @SuppressWarnings("unchecked")
     public void carregarDados() {
         File f = new File(ARQUIVO);
-        if (!f.exists()) return; // Se não existe, começa do zero
+        if (!f.exists()) return; // se não existe, começa do zero
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f))) {
             this.passatempos = (List<Passatempo>) ois.readObject();

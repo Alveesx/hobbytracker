@@ -2,7 +2,7 @@ package backend;
 
 public class Leitura extends Passatempo implements Monetizavel {
 
-    // Chave Mestra para não dar erro de persistência
+    // Chave Mestra
     private static final long serialVersionUID = 1L;
 
     private String autor;
