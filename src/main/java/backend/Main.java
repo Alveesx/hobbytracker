@@ -28,12 +28,21 @@ public class Main {
             System.out.println("Passatempo adicionado: " + livro.getNome());
         } else {
             System.out.println("Dados carregados com sucesso!");
-            System.out.println("Passatempos registados: " + gestor.getLista().size());
 
             for (Passatempo p : gestor.getLista()) {
-                System.out.println("- " + p.getNome() + " (Histórico: " + p.getHistorico().size() + " sessões)");
+                System.out.println("------------------------------------------------");
+                System.out.println("Hobbie: " + p.getNome());
+                System.out.println("Total Investido: " + p.getMinutosTotais() + " minutos");
+
+                // Teste de Data
+                int sessoesEsteMes = p.getNumSessoesNoMes(LocalDate.now().getYear(), LocalDate.now().getMonthValue());
+                System.out.println("Sessões este mês: " + sessoesEsteMes);
+
+                // Teste de Atividade
+                System.out.println("Estado: " + (p.isAtivoRecentemente() ? "ATIVO 🔥" : "PARADO 🧊"));
+
                 if (p instanceof Monetizavel) {
-                    System.out.println("  Custo: " + ((Monetizavel) p).getCusto() + " " + ((Monetizavel) p).getMoeda());
+                    System.out.println("Custo: " + ((Monetizavel) p).getCusto() + " " + ((Monetizavel) p).getMoeda());
                 }
             }
         }
