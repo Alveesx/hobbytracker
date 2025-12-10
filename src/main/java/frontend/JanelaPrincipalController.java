@@ -1,12 +1,9 @@
 package frontend;
 
-// IMPORTS DO BACKEND
 import backend.GestorPassatempos;
 import backend.Leitura;
 import backend.Passatempo;
 import backend.Sessao;
-
-// IMPORTS DO JAVAFX
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,27 +11,21 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.time.LocalDate;
 
 public class JanelaPrincipalController {
 
-    // --- 1. LIGAÇÃO AO SCENE BUILDER (VIEW) ---
     @FXML private TableView<Passatempo> tabelaPassatempos;
     @FXML private TableColumn<Passatempo, String> colNome;
     @FXML private TableColumn<Passatempo, Double> colProgresso;
 
-    // A Caixa de Texto onde escreves o nome
     @FXML private TextField inputNome;
+    @FXML private TextField inputMinutos;
 
-    // O Cérebro do Backend
     private GestorPassatempos gestor;
 
-    // --- 2. INICIALIZAÇÃO ---
     @FXML
     public void initialize() {
-        System.out.println("--- CONTROLADOR INICIADO ---");
-
         gestor = new GestorPassatempos();
         gestor.carregarDados();
 
@@ -44,72 +35,69 @@ public class JanelaPrincipalController {
         atualizarTabela();
     }
 
-    // --- 3. AÇÃO DO BOTÃO "ADICIONAR" ---
+    // --- AÇÃO: ADICIONAR HOBBY ---
     @FXML
     public void acaoAdicionar() {
-        // A. Ler o texto da caixa
-        String nomeDigitado = inputNome.getText();
+        String nome = inputNome.getText();
+        if (nome == null || nome.trim().isEmpty()) return;
 
-        // B. Validação
-        if (nomeDigitado == null || nomeDigitado.trim().isEmpty()) {
-            System.out.println("Aviso: Nome vazio. Nada foi criado.");
-            return;
-        }
+        // CORREÇÃO: Já não passamos preço, apenas Nome e Autor
+        Leitura novo = new Leitura(nome, "Autor Desconhecido");
 
-        System.out.println("A criar passatempo: " + nomeDigitado);
-
-        // C. Criar o objeto Leitura
-        Leitura novo = new Leitura(nomeDigitado, "Autor Desconhecido", 0.0);
+        // Define meta de 100 horas para haver barra de progresso
         novo.setObjetivoAnualHoras(100);
 
-        // Adicionar sessão de teste
-        Sessao s = new Sessao(LocalDate.now(), 600, "Sessão inicial de teste");
-        novo.adicionarSessao(s);
-
-        // D. Guardar no Sistema e na Tabela
         gestor.adicionarPassatempo(novo);
-        tabelaPassatempos.getItems().add(novo);
+        gestor.guardarDados(); // Grava logo para não perder dados
 
-        // Grava no disco IMEDIATAMENTE após adicionar
-        gestor.guardarDados();
-        System.out.println("Dados guardados no ficheiro com sucesso.");
-
-        // E. Limpar a caixa
+        atualizarTabela();
         inputNome.clear();
     }
 
-    // --- 4. AÇÃO DO BOTÃO "APAGAR" (NOVO) ---
+    // --- AÇÃO: APAGAR HOBBY ---
     @FXML
     public void acaoApagar() {
-        // 1. Descobrir qual linha está selecionada (fica azul)
         Passatempo selecionado = tabelaPassatempos.getSelectionModel().getSelectedItem();
+        if (selecionado == null) return;
 
-        // 2. Proteção: Se o utilizador clicar no botão sem selecionar nada
+        gestor.getLista().remove(selecionado);
+        gestor.guardarDados();
+
+        atualizarTabela();
+    }
+
+    // --- AÇÃO: REGISTAR SESSÃO ---
+    @FXML
+    public void acaoRegistarSessao() {
+        Passatempo selecionado = tabelaPassatempos.getSelectionModel().getSelectedItem();
         if (selecionado == null) {
-            System.out.println("Aviso: Nada selecionado para apagar.");
+            System.out.println("Seleciona um hobby primeiro!");
             return;
         }
 
-        System.out.println("A apagar: " + selecionado.getNome());
+        String textoMinutos = inputMinutos.getText();
+        try {
+            int minutos = Integer.parseInt(textoMinutos);
 
-        // 3. Remover do Backend (Lista real)
-        gestor.getLista().remove(selecionado);
+            // Cria a sessão com a data de hoje
+            Sessao s = new Sessao(LocalDate.now(), minutos, "Prática registada");
 
-        // 4. Remover do Frontend (Lista visual)
-        tabelaPassatempos.getItems().remove(selecionado);
+            // Adiciona ao hobby
+            selecionado.adicionarSessao(s);
 
-        // 5. Gravar a alteração no disco para ser definitivo
-        gestor.guardarDados();
+            gestor.guardarDados();
 
-        System.out.println("Passatempo removido e ficheiro atualizado.");
+            // Força a tabela a atualizar os números
+            tabelaPassatempos.refresh();
+            inputMinutos.clear();
+
+        } catch (NumberFormatException e) {
+            System.out.println("Erro: Os minutos têm de ser um número!");
+        }
     }
 
-    // --- 5. MÉTODOS AUXILIARES ---
     private void atualizarTabela() {
-        if (gestor.getLista().isEmpty()) {
-            System.out.println("A lista está vazia.");
-        }
-        ObservableList<Passatempo> dadosVisuais = FXCollections.observableArrayList(gestor.getLista());
-        tabelaPassatempos.setItems(dadosVisuais);
+        ObservableList<Passatempo> dados = FXCollections.observableArrayList(gestor.getLista());
+        tabelaPassatempos.setItems(dados);
     }
 }
