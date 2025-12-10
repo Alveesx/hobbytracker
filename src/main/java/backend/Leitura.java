@@ -29,7 +29,7 @@ public class Leitura extends Passatempo implements Serializable {
         return "Ler um capitulo por dia";
     }
 
-    // Retorna uma representação em texto da leitura (inclui ID, nome e autor)
+    // Retorna uma representação em texto da leitura (inclui UID, nome e autor)
     @Override
     public String toString() {
         return super.toString() + " Autor: " + autor;

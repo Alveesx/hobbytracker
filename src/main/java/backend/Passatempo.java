@@ -10,7 +10,7 @@ public abstract class Passatempo implements Serializable {
     private static final long serialVersionUID = 1L;
     private static int ultimo = 0;
 
-    private int id;
+    private int uid;
     protected String nome;
     protected ArrayList<Sessao> historico;
     protected int objetivoAnualMinutos;
@@ -18,25 +18,25 @@ public abstract class Passatempo implements Serializable {
     // Construtor: cria um passatempo com nome e atribui um ID único automático
     public Passatempo(String nome) {
         ultimo++;
-        this.id = ultimo;
+        this.uid = ultimo;
         this.nome = nome;
         this.historico = new ArrayList<Sessao>();
         this.objetivoAnualMinutos = 0;
     }
 
-    // Retorna o último ID atribuído
+    // Retorna o último UID atribuído
     public static int getUltimo() {
         return ultimo;
     }
 
-    // Define o último ID (usado ao carregar dados guardados)
+    // Define o último UID (usado ao carregar dados guardados)
     public static void setUltimo(int u) {
         ultimo = u;
     }
 
-    // Retorna o ID único deste passatempo
-    public int getId() {
-        return id;
+    // Retorna o UID único deste passatempo
+    public String getUid() {
+        return String.valueOf(uid);
     }
 
     // Retorna o nome do passatempo
@@ -88,6 +88,6 @@ public abstract class Passatempo implements Serializable {
     // Retorna uma representação em texto do passatempo (ID e nome)
     @Override
     public String toString() {
-        return "ID: " + id + " Nome: " + nome;
+        return "UID: " + uid + " Nome: " + nome;
     }
 }

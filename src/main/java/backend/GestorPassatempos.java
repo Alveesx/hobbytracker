@@ -24,7 +24,7 @@ public class GestorPassatempos {
     }
 
     // Guarda todos os dados no ficheiro
-    // Serializa o último ID e a lista de passatempos
+    // Serializa o último UID e a lista de passatempos
     public void guardarDados() {
         try {
             FileOutputStream fos = new FileOutputStream(ARQUIVO);
@@ -41,7 +41,7 @@ public class GestorPassatempos {
     }
 
     // Carrega os dados do ficheiro
-    // Restaura o último ID e a lista de passatempos
+    // Restaura o último UID e a lista de passatempos
     public void carregarDados() {
         File f = new File(ARQUIVO);
         // Se o ficheiro não existe, não faz nada
@@ -52,7 +52,7 @@ public class GestorPassatempos {
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            // Lê o último ID atribuído
+            // Lê o último UID atribuído
             int ultimo = ois.readInt();
             Passatempo.setUltimo(ultimo);
 
