@@ -2,7 +2,7 @@ package backend;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class filmes extends Passatempo implements Serializable {
+public class Filmes extends Passatempo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -13,7 +13,7 @@ public class filmes extends Passatempo implements Serializable {
     private String plataforma;
     private int avaliacao;
 
-    public filmes(String nome,String atores,String producao,String tipo,String plataforma,int avaliacao){
+    public Filmes(String nome, String atores, String producao, String tipo, String plataforma, int avaliacao){
         super(nome)
         this.atores = atores;
         this.producao = producao;
