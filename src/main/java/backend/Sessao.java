@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Sessao implements Serializable, Comparable<Sessao> {
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 1L;
     private LocalDate data;
     private int duracaoMinutos;
     private String descricao;
@@ -28,9 +28,13 @@ public class Sessao implements Serializable, Comparable<Sessao> {
         return descricao;
     }
 
-    // este método ensina a Sessão a comparar-se com outra para ver quem vem primeiro
     @Override
-    public int compareTo(Sessao outraSessao) {
-        return this.data.compareTo(outraSessao.getData());
+    public int compareTo(Sessao outra) {
+        return this.data.compareTo(outra.getData());
+    }
+
+    @Override
+    public String toString() {
+        return data + ": " + duracaoMinutos + " min";
     }
 }

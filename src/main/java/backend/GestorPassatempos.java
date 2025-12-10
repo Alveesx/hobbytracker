@@ -2,40 +2,59 @@ package backend;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GestorPassatempos {
-    private List<Passatempo> passatempos;
+
+    private ArrayList<Passatempo> passatempos;
     private final String ARQUIVO = "dados.dat";
 
     public GestorPassatempos() {
-        this.passatempos = new ArrayList<>();
+        this.passatempos = new ArrayList<Passatempo>();
     }
 
     public void adicionarPassatempo(Passatempo p) {
-        this.passatempos.add(p);
+        passatempos.add(p);
+    }
+
+    public ArrayList<Passatempo> getLista() {
+        return passatempos;
     }
 
     public void guardarDados() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARQUIVO))) {
+        try {
+            FileOutputStream fos = new FileOutputStream(ARQUIVO);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeInt(Passatempo.getUltimo());
             oos.writeObject(passatempos);
+
+            oos.close();
             System.out.println("Dados guardados com sucesso.");
         } catch (IOException e) {
-            System.err.println("Erro fatal a guardar: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
-    @SuppressWarnings("unchecked")
     public void carregarDados() {
         File f = new File(ARQUIVO);
-        if (!f.exists()) return; // se não existe, começa do zero
+        if (!f.exists()) {
+            return;
+        }
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f))) {
-            this.passatempos = (List<Passatempo>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Erro a carregar: " + e.getMessage());
+            int ultimo = ois.readInt();
+            Passatempo.setUltimo(ultimo);
+
+            passatempos = (ArrayList<Passatempo>) ois.readObject();
+
+            ois.close();
+            System.out.println("Dados carregados com sucesso.");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
-
-    public List<Passatempo> getLista() { return passatempos; }
 }
