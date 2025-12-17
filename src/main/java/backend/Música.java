@@ -13,18 +13,17 @@ public class Música extends Passatempo {
         this.album = album;
         this.avaliacao = avaliacao;
     }
-    @Override
-    public String getPlanoIdeal() {
-        return "";
-    }
-    public String getartista() {
+
+
+    public String getArtista() {
         return artista;
     }
 
     public void setArtista(String artista) {
         this.artista = artista;
-}
-    public String getgenero() {
+    }
+
+    public String getGenero() {
         return genero;
     }
 
@@ -32,22 +31,29 @@ public class Música extends Passatempo {
         this.genero = genero;
     }
 
-    public String getalbum() {
+    public String getAlbum() {
         return album;
     }
 
     public void setAlbum(String album) {
         this.album = album;
     }
-    public int getavaliacao() {
+
+    public int getAvaliacao() {
         return avaliacao;
     }
 
     public void setAvaliacao(int avaliacao) {
         this.avaliacao = avaliacao;
     }
+
+    @Override
+    public String getPlanoIdeal() {
+        return "Atenção ao volume não exceda os 80 decibéis!";
+    }
     @Override
     public String toString() {
-        return super.toString() + " [Música: " + artista + " | " + genero + "]";
+        return super.toString() +
+                " [Música: " + artista + " | " + genero + " | " + album + " | " + avaliacao + "]";
     }
 }

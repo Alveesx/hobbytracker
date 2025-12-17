@@ -5,33 +5,56 @@ import java.io.Serializable;
 public class Leitura extends Passatempo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String autor;
 
-    // Construtor: cria uma leitura com nome e autor
-    public Leitura(String nome, String autor) {
+    private String autor;
+    private String genero;
+    private int numPaginas;
+
+    // Construtor atualizado
+    public Leitura(String nome, String autor, String genero, int numPaginas) {
         super(nome);
         this.autor = autor;
+        this.genero = genero;
+        this.numPaginas = numPaginas;
     }
 
-    // Retorna o autor do livro
+    // --- GETTERS E SETTERS ---
+
     public String getAutor() {
         return autor;
     }
 
-    // Altera o autor do livro
     public void setAutor(String autor) {
         this.autor = autor;
     }
 
-    // Retorna o plano ideal para este tipo de passatempo
-    @Override
-    public String getPlanoIdeal() {
-        return "Ler um capitulo por dia";
+    public String getGenero() {
+        return genero;
     }
 
-    // Retorna uma representação em texto da leitura (inclui UID, nome e autor)
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+
+    @Override
+    public String getPlanoIdeal() {
+        return "Ler um capitulo ou 20 paginas por dia.";
+    }
+
     @Override
     public String toString() {
-        return super.toString() + " Autor: " + autor;
+        // Exemplo: ID: 1 Nome: X [Autor: Y | Género: Z | 300 págs]
+        return super.toString() + " [Autor: " + autor + " | Género: " + genero + " | " + numPaginas + " págs]";
     }
 }
+
+//terminado

@@ -22,12 +22,6 @@ public class Jogos extends Passatempo implements Serializable {
         this.avaliacao = avaliacao;
     }
 
-    // --- IMPLEMENTAÇÃO OBRIGATÓRIA DA CLASSE MÃE ---
-    @Override
-    public String getPlanoIdeal() {
-        return "Atenção ao tempo no ecrã, faça pausas de hora em hora!";
-    }
-
     // --- GETTERS E SETTERS ---
 
     public String getPlataforma() {
@@ -71,7 +65,15 @@ public class Jogos extends Passatempo implements Serializable {
     }
 
     @Override
+    public String getPlanoIdeal() {
+        return "Atenção ao tempo no ecrã, faça pausas de hora em hora!";
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + " [Jogo: " + plataforma + " | " + genero + "]";
+        // Exemplo de output: "ID: 2 Nome: Minecraft [PC | Geral | Multi: Sim | Dif: 3/5 | Nota: 8/10]"
+        return super.toString() + " [" + plataforma + " | " + genero + " | Multi: " + (multijogador ? "Sim" : "Não") + " | Dif: " + nivelDificuldade + "/5 | Nota: " + avaliacao + "/10]";
     }
 }
+
+//terminado
