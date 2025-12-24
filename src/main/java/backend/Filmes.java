@@ -20,39 +20,44 @@ public class Filmes extends Passatempo implements Serializable {
         this.plataforma = plataforma;
         this.avaliacao = avaliacao;
     }
-// --- GETTERS E SETTERS ---
 
-    public String getAtores() {
 
-        return atores;
-    }
-    public String getProducao(){
-        return producao;
-    }
-    public String getCategoria(){
-        return categoria;
-    }
-    public String getPlataforma(){
-        return plataforma;
-    }
-    public int getAvaliacao(){
-        return avaliacao;
-    }
+    // --- GETTERS E SETTERS ---
 
+    public String getAtores() {return atores;}
     public void setAtores(String atores) {
         this.atores = atores;
     }
-    public void setProducao(String producao) {this.producao = producao;
+
+    public String getProducao(){
+        return producao;
+    }
+    public void setProducao(String producao) {this.producao = producao;}
+
+    public String getCategoria(){
+        return categoria;
     }
     public void setCategoria(String tipo) {
         this.categoria = categoria;
     }
+
+
+    public String getPlataforma(){
+        return plataforma;
+    }
     public void setAvaliacao(int avaliacao) {
         this.avaliacao = avaliacao;
+    }
+
+
+    public int getAvaliacao(){
+        return avaliacao;
     }
     public void setPlataforma(String plataforma) {
         this.plataforma = plataforma;
     }
+
+
     @Override
     public String getPlanoIdeal() {
         return "@@@@@@@@@@@@@@";

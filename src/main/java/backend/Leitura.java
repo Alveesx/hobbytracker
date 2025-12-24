@@ -23,23 +23,20 @@ public class Leitura extends Passatempo implements Serializable {
     public String getAutor() {
         return autor;
     }
+    public void setAutor(String autor) { this.autor = autor; }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
 
     public String getGenero() {
         return genero;
     }
-
     public void setGenero(String genero) {
         this.genero = genero;
     }
 
+
     public int getNumPaginas() {
         return numPaginas;
     }
-
     public void setNumPaginas(int numPaginas) {
         this.numPaginas = numPaginas;
     }
@@ -57,4 +54,3 @@ public class Leitura extends Passatempo implements Serializable {
     }
 }
 
-//terminado

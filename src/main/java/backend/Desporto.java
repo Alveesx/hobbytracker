@@ -53,7 +53,7 @@ public class Desporto extends Passatempo {
     @Override
     public String toString() {
         return super.toString() +
-                "[Desporto: "+ categoria +" | "+ materialPrincipal +" | " + objetivo +" | "+ local +" | "+ dificuldade +" | "+ avaliacao +"]";
+                "["+ categoria +" | "+ materialPrincipal +" | Obj: " + objetivo +" | "+ local +" | Dif: "+ dificuldade +" | Nota: "+ avaliacao +"]";
     }
 }
 

@@ -42,7 +42,7 @@ public class JanelaPrincipalController {
         if (nome == null || nome.trim().isEmpty()) return;
 
         // CORREÇÃO: Já não passamos preço, apenas Nome e Autor
-        Leitura novo = new Leitura(nome, "Autor Desconhecido");
+        Leitura novo = new Leitura(nome, "Autor Desconhecido", "");
 
         // Define meta de 100 horas para haver barra de progresso
         novo.setObjetivoAnualHoras(100);

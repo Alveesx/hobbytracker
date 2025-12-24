@@ -17,7 +17,7 @@ public class Main {
             System.out.println("Lista vazia. A criar dados de exemplo...");
 
             // CORREÇÃO AQUI: Só Nome e Autor (sem preço)
-            Leitura livro = new Leitura("O Senhor dos Aneis", "Tolkien");
+            Leitura livro = new Leitura("O Senhor dos Aneis", "Tolkien",);
             livro.setObjetivoAnualHoras(100);
 
             // Adicionar uma sessão de teste (ontem, 60 min)
