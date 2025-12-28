@@ -5,16 +5,14 @@ public class Desporto extends Passatempo {
     private String materialPrincipal;       //Bola, Raquete, Barco, Apenas o corpo
     private String objetivo;                //Marcar golos, Fazer mais pontos, Chegar primeiro
     private String local;                   //Pavilhão, Ar Livre, Piscina
-    private String dificuldade;             //Fácil, Médio, Difícil
     private int avaliacao;
 
-    public Desporto(String nome, String categoria, String materialPrincipal, String objetivo, String local, String dificuldade, int avaliacao) {
+    public Desporto(String nome, String categoria, String materialPrincipal, String objetivo, String local, int avaliacao) {
         super(nome);
         this.categoria = categoria;
         this.materialPrincipal = materialPrincipal;
         this.objetivo = objetivo;
         this.local = local;
-        this.dificuldade = dificuldade;
         this.avaliacao = avaliacao;
     }
 
@@ -37,10 +35,6 @@ public class Desporto extends Passatempo {
     public void setLocal(String local) {this.local = local;}
 
 
-    public String getDificuldade() {return dificuldade;}
-    public void setDificuldade(String dificuldade) {this.dificuldade = dificuldade;}
-
-
     public int getAvaliacao() {return avaliacao;}
     public void setAvaliacao(int avaliacao) {this.avaliacao = avaliacao;}
 
@@ -53,7 +47,7 @@ public class Desporto extends Passatempo {
     @Override
     public String toString() {
         return super.toString() +
-                "["+ categoria +" | "+ materialPrincipal +" | Obj: " + objetivo +" | "+ local +" | Dif: "+ dificuldade +" | Nota: "+ avaliacao +"]";
+                "["+ categoria +" | "+ materialPrincipal +" | Obj: " + objetivo +" | "+ local +"| Nota: "+ avaliacao +"]";
     }
 }
 
