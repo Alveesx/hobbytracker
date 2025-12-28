@@ -1,10 +1,15 @@
 package backend;
 
-public class Desporto extends Passatempo {
-    private String categoria;               //Individual ou Equipa
-    private String materialPrincipal;       //Bola, Raquete, Barco, Apenas o corpo
-    private String objetivo;                //Marcar golos, Fazer mais pontos, Chegar primeiro
-    private String local;                   //Pavilhão, Ar Livre, Piscina
+import java.io.Serializable;
+
+public class Desporto extends Passatempo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String categoria;               // Individual ou Equipa
+    private String materialPrincipal;       // Bola, Raquete, Barco...
+    private String objetivo;                // Marcar golos, Fazer pontos...
+    private String local;                   // Pavilhão, Ar Livre...
     private int avaliacao;
 
     public Desporto(String nome, String categoria, String materialPrincipal, String objetivo, String local, int avaliacao) {
@@ -16,28 +21,47 @@ public class Desporto extends Passatempo {
         this.avaliacao = avaliacao;
     }
 
-
     // --- GETTERS E SETTERS ---
 
-    public String getCategoria() {return categoria;}
-    public void setCategoria(String categoria) {this.categoria = categoria;}
+    public String getCategoria() {
+        return categoria;
+    }
 
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
-    public String getMaterialPrincipal() {return materialPrincipal;}
-    public void setMaterialPrincipal(String materialPrincipal) {this.materialPrincipal = materialPrincipal;}
+    public String getMaterialPrincipal() {
+        return materialPrincipal;
+    }
 
+    public void setMaterialPrincipal(String materialPrincipal) {
+        this.materialPrincipal = materialPrincipal;
+    }
 
-    public String getObjetivo() {return objetivo;}
-    public void setObjetivo(String objetivo) {this.objetivo = objetivo;}
+    public String getObjetivo() {
+        return objetivo;
+    }
 
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
 
-    public String getLocal() {return local;}
-    public void setLocal(String local) {this.local = local;}
+    public String getLocal() {
+        return local;
+    }
 
+    public void setLocal(String local) {
+        this.local = local;
+    }
 
-    public int getAvaliacao() {return avaliacao;}
-    public void setAvaliacao(int avaliacao) {this.avaliacao = avaliacao;}
+    public int getAvaliacao() {
+        return avaliacao;
+    }
 
+    public void setAvaliacao(int avaliacao) {
+        this.avaliacao = avaliacao;
+    }
 
     @Override
     public String getPlanoIdeal() {
@@ -46,9 +70,7 @@ public class Desporto extends Passatempo {
 
     @Override
     public String toString() {
-        return super.toString() +
-                "["+ categoria +" | "+ materialPrincipal +" | Obj: " + objetivo +" | "+ local +"| Nota: "+ avaliacao +"]";
+        // Formatação ajustada para bater certo com Jogos e Leitura
+        return super.toString() + " [" + categoria + " | " + materialPrincipal + " | Obj: " + objetivo + " | " + local + " | Nota: " + avaliacao + "]";
     }
 }
-
-

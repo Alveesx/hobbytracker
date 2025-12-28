@@ -75,7 +75,6 @@ public class Passatempo implements Serializable {
         return (double) total / objetivoAnualMinutos * 100;
     }
 
-    // 2. REMOVIDO O "ABSTRACT" E ADICIONADO UM RETORNO PADRÃO
     public String getPlanoIdeal() {
         return "Praticar com regularidade e moderação.";
     }
