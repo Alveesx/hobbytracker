@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Jogos extends Passatempo implements Serializable {
 
-
     private static final long serialVersionUID = 1L;
 
     private String plataforma;
@@ -21,8 +20,6 @@ public class Jogos extends Passatempo implements Serializable {
         this.nivelDificuldade = nivelDificuldade;
         this.avaliacao = avaliacao;
     }
-
-    // --- GETTERS E SETTERS ---
 
     public String getPlataforma() {
         return plataforma;
@@ -66,14 +63,11 @@ public class Jogos extends Passatempo implements Serializable {
 
     @Override
     public String getPlanoIdeal() {
-        return "Atenção ao tempo no ecrã, faça pausas de hora em hora!";
+        return "Jogar no máximo 2 horas por dia.";
     }
 
     @Override
     public String toString() {
-        // Exemplo de output: "ID: 2 Nome: Minecraft [PC | Geral | Multi: Sim | Dif: 3/5 | Nota: 8/10]"
-        return super.toString() + " [" + plataforma + " | " + genero + " | Multi: " + (multijogador ? "Sim" : "Não") + " | Dif: " + nivelDificuldade + "/5 | Nota: " + avaliacao + "/10]";
+        return super.toString() + " [" + plataforma + " | " + genero + " | Online: " + (multijogador ? "Sim" : "Não") + " | Dif: " + nivelDificuldade + "/5 | Nota: " + avaliacao + "/10]";
     }
 }
-
-//terminado
