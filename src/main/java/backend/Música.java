@@ -19,8 +19,6 @@ public class Música extends Passatempo implements Serializable {
         this.avaliacao = avaliacao;
     }
 
-    // --- GETTERS E SETTERS ---
-
     public String getArtista() {
         return artista;
     }
@@ -55,12 +53,11 @@ public class Música extends Passatempo implements Serializable {
 
     @Override
     public String getPlanoIdeal() {
-        return "Atenção ao volume, não exceda os 80 decibéis!";
+        return "Atenção ao volume!";
     }
 
     @Override
     public String toString() {
-        // Formato padronizado: ID: 1 Nome: X [Artista: Y | Género: Z | Álbum: W | Nota: 10]
-        return super.toString() + " [Artista: " + artista + " | Género: " + genero + " | Álbum: " + album + " | Nota: " + avaliacao + "/10]";
+        return super.toString() + " [Artista: " + artista + " | Álbum: " + album + " | Género: " + genero + " | Nota: " + avaliacao + "/10]";
     }
 }

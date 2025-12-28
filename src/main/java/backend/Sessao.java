@@ -3,44 +3,46 @@ package backend;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Sessao implements Serializable, Comparable<Sessao> {
+public class Sessao implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     private LocalDate data;
-    private int duracaoMinutos;
+    private double horas;
     private String descricao;
 
-    // Construtor: cria uma sessão com data, duração em minutos e descrição
-    public Sessao(LocalDate data, int duracaoMinutos, String descricao) {
+    public Sessao(LocalDate data, double horas, String descricao) {
         this.data = data;
-        this.duracaoMinutos = duracaoMinutos;
+        this.horas = horas;
         this.descricao = descricao;
     }
 
-    // Retorna a data da sessão
     public LocalDate getData() {
         return data;
     }
 
-    // Retorna a duração da sessão em minutos
-    public int getDuracaoMinutos() {
-        return duracaoMinutos;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
-    // Retorna a descrição da sessão
+    public double getHoras() {
+        return horas;
+    }
+
+    public void setHoras(double horas) {
+        this.horas = horas;
+    }
+
     public String getDescricao() {
         return descricao;
     }
 
-    // Compara esta sessão com outra pela data (para ordenação)
-    @Override
-    public int compareTo(Sessao outra) {
-        return this.data.compareTo(outra.getData());
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    // Retorna uma representação em texto da sessão (data e duração)
     @Override
     public String toString() {
-        return data + ": " + duracaoMinutos + " min";
+        return data + " - " + horas + " h (" + descricao + ")";
     }
 }

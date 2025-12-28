@@ -18,7 +18,7 @@ public class AppGrafica extends Application {
 
         Scene scene = new Scene(root);
         
-        stage.setTitle("Gestor de Hobbies - O Desafio");
+        stage.setTitle("Gestor de Hobbies");
         stage.setScene(scene);
         stage.show();
     }
